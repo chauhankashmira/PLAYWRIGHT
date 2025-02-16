@@ -1,0 +1,34 @@
+//const { test, expect } = require('@playwright/test');
+
+import {test, expect} from '@playwright/test'
+
+test ('Locators', async ({page})=>{
+await page.goto ("https://demoblaze.com/");
+
+//click on login button using property as a locator
+// await page.locator('id=login2').click () //this is one approach
+await page.click ('id=login2') //this is second approach
+
+
+//provide username using css locator
+//await page.locator ('#loginusername').fill("chauhankashmira") //this is one approach
+//await page.type ('#loginusername', 'chauhankashmira'); //this is second approach
+await page.fill('#loginusername', 'chauhankashmira'); //this is third approach
+
+
+//provide the password using css locator
+await page.fill("input[id='loginpassword']", 'test@123');
+
+//click on log in button using xpath locator
+
+await page.click("//button[normalize-space()='Log in']");
+
+// //verify logout link presence: check visibility of element (capture of element) using xpath
+
+// const logoutlink = await page.locator("#logout2");
+
+// await expect(logoutlink).toBeVisible();    
+
+await page.close();
+
+});
