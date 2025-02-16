@@ -1,0 +1,29 @@
+const {test, expect} = require ('@playwright/test'); //import module
+const { clearScreenDown } = require( 'readline' );
+
+test('Locator', async ({page})=> {
+ 
+  await page.goto('https://demoblaze.com/'); //this will open the webpage
+
+  const links = await page.$$('a') //this will return all links with anchor tag
+
+
+//to extract the text from every link using looping statement for loop
+
+// for (const link of links)
+//     {const linktext = await link.textContent();
+//         console.log(linktext)
+
+// }
+
+
+//Get the lable of product list. First go to webpage > right click on any one product > inspect > SelectorsHub > click on element tag (arror on the left hand top corner)> then follow the path of main div > then create x-path //div[@id='tbodyid']//div//h4//a
+//Need to wait for sometimes if list of product does not appear. Sometimes it takes time. If cannot see, then try after some time. OR add one extra step
+
+page.waitForSelector ("//div[@id='tbodyid']//div//h4//a"); //this is extra step
+const products = await page.$$("//div[@id='tbodyid']//div//h4//a");
+for (const product of products) {
+    const productName = await product.textContent();
+    console.log(productName);
+}
+});
