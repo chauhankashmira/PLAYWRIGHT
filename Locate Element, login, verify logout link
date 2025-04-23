@@ -8,13 +8,13 @@ await page.goto('https://www.demoblaze.com/index.html');
 await page.click('id=login2');
 
 //Enter Username using CSS locator
-//await page.locator('#loginusername').fill('chauhankashmira@yahoo.co.uk');
-await page.fill('#loginusername', 'chauhankashmira@yahoo.co.uk');
-//await page.type('#loginusername', 'chauhankashmira@yahoo.co.uk');
+//await page.locator('#loginusername').fill('abc@yahoo.com');
+await page.fill('#loginusername', 'abc@yahoo.com');
+//await page.type('#loginusername', 'abc@yahoo.com');
 
 
 //Enter Password using/creating CSS locator
-await page.fill("input[id='loginpassword']", 'Smartbaby1');
+await page.fill("input[id='loginpassword']", 'Superwoman');
 
 //Click on Login Button using x-path locator
 
