@@ -1,0 +1,32 @@
+const {test, expect} = require('@playwright/test');
+
+test ('Home Page', async({page}) => {
+await page.goto('https://www.demoblaze.com/index.html');
+
+//click on login button using property as a locator
+//await page.locator('id=login2').click()
+await page.click('id=login2');
+
+//Enter Username using CSS locator
+//await page.locator('#loginusername').fill('chauhankashmira@yahoo.co.uk');
+await page.fill('#loginusername', 'chauhankashmira@yahoo.co.uk');
+//await page.type('#loginusername', 'chauhankashmira@yahoo.co.uk');
+
+
+//Enter Password using/creating CSS locator
+await page.fill("input[id='loginpassword']", 'Smartbaby1');
+
+//Click on Login Button using x-path locator
+
+await page.click("//button[normalize-space()='Log in']");
+
+
+//Just to verify logout link presence using variable and expect, Xpath locator
+const logoutlink = await page.locator("(//a[normalize-space()='Log out'])[1]");
+
+await expect(logoutlink).toBeVisible();
+
+await page.close();
+
+
+} )
